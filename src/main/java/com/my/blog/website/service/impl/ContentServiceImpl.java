@@ -71,7 +71,7 @@ public class ContentServiceImpl implements IContentService {
             }
             if (!TaleUtils.isPath(contents.getSlug())) throw new TipException("您输入的路径不合法");
             ContentVoExample contentVoExample = new ContentVoExample();
-            contentVoExample.createCriteria().andTypeEqualTo(contents.getType()).andStatusEqualTo(contents.getSlug());
+            contentVoExample.createCriteria().andTypeEqualTo(contents.getType()).andSlugEqualTo(contents.getSlug());
             long count = contentDao.countByExample(contentVoExample);
             if (count > 0) throw new TipException("该路径已经存在，请重新输入");
         } else {
